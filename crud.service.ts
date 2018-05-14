@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class CarService {
 
-  private baseURL = 'http://localhost:8080/Login/api/cars/';
+  private baseURL = '';
   data: any[];
   subject = new Subject<any[]>();
 
@@ -32,7 +32,7 @@ export class CarService {
     this.subject.next(this.data);
   }
 
-  // This method is only called to get the details of a single car, so it doesnt changes the database copy in memory.
+  // This method is only called to get the details of a single entity, so it doesnt changes the database copy in memory.
   getSingleEntityInDB(id: number): Observable<any> {
     const url = `${this.baseURL}/${id}`;
     return this.http.get<any>(url, httpOptions);
